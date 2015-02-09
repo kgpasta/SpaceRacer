@@ -10,16 +10,15 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 		// move left
 		if (Input.GetKey (KeyCode.LeftArrow)) {
 			Debug.Log ("Left Arrow has been hit");
-			rigidbody2D.AddForce(-Vector2.right*10);
+			rigidbody2D.AddTorque(1f);
 		}
 		// move right
 		if (Input.GetKey (KeyCode.RightArrow)) {
 			Debug.Log ("Right Arrow has been hit");
-			rigidbody2D.AddForce(Vector2.right);
+			rigidbody2D.AddTorque(-1f);
 		}
 		// move forward
 		if (Input.GetKey (KeyCode.UpArrow)) {
@@ -29,7 +28,7 @@ public class Movement : MonoBehaviour {
 		// move backward
 		if (Input.GetKey (KeyCode.DownArrow)) {
 			Debug.Log ("Backward Arrow has been hit");
-			rigidbody2D.AddForce(-Vector2.up);		
+			rigidbody2D.AddForce(-Vector2.up,0);		
 		}
 	}
 //	void FixedUpdate(){
