@@ -936,6 +936,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 2087285659}
   - 212: {fileID: 2087285658}
+  - 114: {fileID: 2087285661}
+  - 50: {fileID: 2087285660}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -978,6 +980,32 @@ Transform:
   - {fileID: 434357040}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!50 &2087285660
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087285657}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+--- !u!114 &2087285661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087285657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9bcf11d7280424fb76499ba1609e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2141584912
 GameObject:
   m_ObjectHideFlags: 0
