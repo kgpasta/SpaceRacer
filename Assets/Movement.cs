@@ -23,12 +23,12 @@ public class Movement : MonoBehaviour {
 		// move forward
 		if (Input.GetKey (KeyCode.UpArrow)) {
 			Debug.Log ("Forward Arrow has been hit");
-			rigidbody2D.AddForce(Vector2.up);		
+			rigidbody2D.AddForce(transform.up);		
 		}
 		// move backward
 		if (Input.GetKey (KeyCode.DownArrow)) {
 			Debug.Log ("Backward Arrow has been hit");
-			rigidbody2D.AddForce(-Vector2.up,0);		
+			rigidbody2D.AddForce(-transform.up,0);		
 		}
 	}
 //	void FixedUpdate(){
