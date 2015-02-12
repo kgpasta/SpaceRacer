@@ -14,11 +14,15 @@ public class Movement : MonoBehaviour {
 		distanceTraveled = 0;
 	}
 
-	// Stops rotation on collision 
-//	void OnCollisionEnter2D(Collider2D collision) {
-//		rigidbody2D.angularVelocity = 0;
-//		Debug.Log ("hi");
-//	}
+	//Stops rotation on collision 
+	void OnCollisionEnter2D(Collision2D collision) {
+		rigidbody2D.angularVelocity = 0;
+		Debug.Log ("hi");
+	}
+	
+	void OnCollisionExit2D(Collision2D collision){
+		rigidbody2D.angularVelocity = 3;
+	}
 
 	// Update is called once per frame
 	void Update () {

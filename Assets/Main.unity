@@ -1093,7 +1093,7 @@ EdgeCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1118133328}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7fd03c09a3c7ea14abd364840375e6cd, type: 2}
   m_IsTrigger: 0
   m_Points:
   - {x: -4.72007084, y: .101967826}
@@ -1883,24 +1883,25 @@ PolygonCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1639115341}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5dd09bc8ab870114a84e3afc7bce4ac5, type: 2}
   m_IsTrigger: 0
   m_Poly:
     m_Paths:
     - - {x: .239999995, y: .340000004}
       - {x: .180000007, y: .360000014}
-      - {x: .100000001, y: .360000014}
-      - {x: -.17037034, y: .350239128}
+      - {x: .227799416, y: .311314762}
+      - {x: -.200798512, y: .313725233}
       - {x: -.140000001, y: .360000014}
       - {x: -.239999995, y: .360000014}
       - {x: -.319999993, y: .0399999991}
-      - {x: -.340000004, y: -.0599999987}
-      - {x: -.340000004, y: -.280000001}
-      - {x: -.219999999, y: -.479999989}
-      - {x: .180000007, y: -.479999989}
+      - {x: -.218286514, y: .00694215298}
+      - {x: -.240323544, y: -.196703404}
+      - {x: -.181772709, y: -.188715279}
+      - {x: -.0739443302, y: -.267002404}
+      - {x: .198256969, y: -.218317181}
       - {x: .340000004, y: -.300000012}
       - {x: .340000004, y: -.0799999982}
-      - {x: .280000001, y: .0399999991}
+      - {x: .200885534, y: .0400000066}
 --- !u!68 &1639115344
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1949,7 +1950,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1639115341}
   m_Mass: 100
   m_LinearDrag: .5
-  m_AngularDrag: 1
+  m_AngularDrag: 3
   m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
@@ -1989,7 +1990,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300008, guid: bf3bdd2147b394bc2b771f2556f0b49d, type: 3}
+  m_Sprite: {fileID: 21300026, guid: bf3bdd2147b394bc2b771f2556f0b49d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1650022900
 GameObject:
@@ -2489,7 +2490,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 2087285657}
   m_Mass: 100
   m_LinearDrag: .5
-  m_AngularDrag: 1
+  m_AngularDrag: 3
   m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
@@ -2538,24 +2539,25 @@ PolygonCollider2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2087285657}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5dd09bc8ab870114a84e3afc7bce4ac5, type: 2}
   m_IsTrigger: 0
   m_Poly:
     m_Paths:
-    - - {x: .239999995, y: .340000004}
-      - {x: .180000007, y: .360000014}
+    - - {x: .166972876, y: .309571743}
+      - {x: -.166881084, y: .311314881}
       - {x: .100000001, y: .360000014}
       - {x: -.17037034, y: .350239128}
       - {x: -.140000001, y: .360000014}
       - {x: -.239999995, y: .360000014}
-      - {x: -.319999993, y: .0399999991}
+      - {x: -.216542482, y: .0400000066}
       - {x: -.340000004, y: -.0599999987}
       - {x: -.340000004, y: -.280000001}
-      - {x: -.219999999, y: -.479999989}
-      - {x: .180000007, y: -.479999989}
+      - {x: -.250427723, y: -.248745412}
+      - {x: .00960230827, y: -.248745352}
+      - {x: .264332294, y: -.260244191}
       - {x: .340000004, y: -.300000012}
       - {x: .340000004, y: -.0799999982}
-      - {x: .280000001, y: .0399999991}
+      - {x: .188714266, y: .0278287008}
 --- !u!1 &2141584912
 GameObject:
   m_ObjectHideFlags: 0
