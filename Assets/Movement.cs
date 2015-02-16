@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour {
 	public float distanceTraveled;
 	private Vector3 previousPosition;
 	public int laps;
+	public float coeffSpeedUp = 100f;
 
 	// Use this for initialization
 	void Start () {
@@ -39,7 +40,7 @@ public class Movement : MonoBehaviour {
 		// move forward
 		if (Input.GetKey (KeyCode.UpArrow)) {
 			//Debug.Log ("Forward Arrow has been hit");
-			rigidbody2D.AddForce(transform.up*100);		
+			rigidbody2D.AddForce(transform.up*coeffSpeedUp) ;		
 		}
 		// move backward
 		if (Input.GetKey (KeyCode.DownArrow)) {
