@@ -7,8 +7,8 @@ public class LapManager : MonoBehaviour
 
 		public Transform Player1TextPrefab;
 		public Transform Player2TextPrefab;
-	Transform Player1Text;
-	Transform Player2Text;
+		Transform Player1Text;
+		Transform Player2Text;
 
 		// Use this for initialization
 		void Start ()
@@ -38,10 +38,10 @@ public class LapManager : MonoBehaviour
 						}
 				} else if (collider.gameObject.name.Equals ("Player2")) {
 						if (collider.gameObject.GetComponent<Movement2> ().distanceTraveled > Mathf.PI * 3) {
-								int laps = collider.gameObject.GetComponent<Movement> ().laps;
+								int laps = collider.gameObject.GetComponent<Movement2> ().laps;
 								laps++;
 								collider.gameObject.GetComponent<Movement2> ().distanceTraveled = 0;
-								Player1Text.gameObject.GetComponent<Text> ().text = "Laps: " + laps;
+								Player2Text.gameObject.GetComponent<Text> ().text = "Laps: " + laps;
 						}
 				}
 		}

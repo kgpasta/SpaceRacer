@@ -17,7 +17,6 @@ public class Movement : MonoBehaviour {
 	//Stops rotation on collision 
 	void OnCollisionEnter2D(Collision2D collision) {
 		rigidbody2D.angularVelocity = 0;
-		Debug.Log ("hi");
 	}
 	
 	void OnCollisionExit2D(Collision2D collision){
