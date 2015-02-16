@@ -23,7 +23,6 @@ public class MiniGamePoints : MonoBehaviour {
 
 	void MiniGameReward(){
 		Debug.Log ("SpeedBoost");
-		Destroy (gameObject);
 
 //		Movement playerScript = gameObject.GetComponent<Movement> ();
 //		if (playerScript) {
