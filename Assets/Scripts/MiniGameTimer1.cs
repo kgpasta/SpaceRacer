@@ -4,7 +4,6 @@ using System.Collections;
 public class MiniGameTimer1 : MonoBehaviour {
 
 	public float timer = 5.0f;
-	float originalTimer;
 	public GameObject mainGame1;
 //	public GameObject mainGame2;
 
@@ -13,17 +12,12 @@ public class MiniGameTimer1 : MonoBehaviour {
 	void Start () {
 		mainGame1 = GameObject.FindWithTag ("MainGame1");
 //		mainGame2 = GameObject.FindWithTag ("MainGame2");
-		originalTimer = timer;
-	}
-
-	void pauseMainGame (GameObject maingame) {
-		maingame.SetActive (false);	
 	}
 
 
 	// Update is called once per frame
 	void Update () {
-		if (mainGame1.activeSelf != false) {
+		if (mainGame1.activeSelf) {
 			pauseMainGame(mainGame1);
 		}
 
@@ -34,6 +28,11 @@ public class MiniGameTimer1 : MonoBehaviour {
 			restartMainGame(mainGame1);
 		}
 	}
+
+	void pauseMainGame (GameObject maingame) {
+		maingame.SetActive (false);	
+	}
+
 
 	void restartMainGame (GameObject maingame)
 	{

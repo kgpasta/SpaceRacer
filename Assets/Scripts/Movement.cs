@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour {
 		}
 		// move forward
 		if (Input.GetKey (KeyCode.UpArrow)) {
-			//Debug.Log ("Forward Arrow has been hit");
+//			Debug.Log ("Forward Arrow has been hit");
 			rigidbody2D.AddForce(transform.up*coeffSpeedUp) ;		
 		}
 		// move backward

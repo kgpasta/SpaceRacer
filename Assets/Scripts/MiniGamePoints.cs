@@ -7,12 +7,12 @@ public class MiniGamePoints : MonoBehaviour {
 	public int goal = 4;
 	public GameObject other;
 	Movement player1;
-	Movement2 player2;
+//	Movement2 player2;
 //	public float timer = 3.0f;
 
 	void Start(){
 		player1 = (Movement) GameObject.Find ("Player1").GetComponent<Movement>();
-		player2 = (Movement2) GameObject.Find ("Player2").GetComponent<Movement2>();
+//		player2 = (Movement2) GameObject.Find ("Player2").GetComponent<Movement2>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
