@@ -41,8 +41,7 @@ public class MiniGameTimer1 : MonoBehaviour {
 			maingame.gameObject.SetActive(true);
 		}
 
-		timer = originalTimer;
-		gameObject.SetActive(false);
+		Destroy (gameObject);
 
 	}
 }

@@ -24,10 +24,10 @@ public class LapManager : MonoBehaviour
 			Player1Text.gameObject.GetComponent<Text> ().text = "Laps: 0";
 			Player2Text.gameObject.GetComponent<Text> ().text = "Laps: 0";
 			
-			minigame1 = GameObject.FindWithTag ("MiniGame1");
-			minigame1.SetActive (false);
-			minigame2 = GameObject.FindWithTag ("MiniGame2");
-			minigame2.SetActive (false);
+//			minigame1 = GameObject.FindWithTag ("MiniGame1");
+//			minigame1.SetActive (false);
+//			minigame2 = GameObject.FindWithTag ("MiniGame2");
+//			minigame2.SetActive (false);
 
 
 		}
@@ -68,7 +68,8 @@ public class LapManager : MonoBehaviour
 
 		void startMiniGame (GameObject minigame)
 		{
-			minigame.SetActive(true);
+//			minigame.SetActive(true);
+			Instantiate (minigame);
 
 		}
 			
