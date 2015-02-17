@@ -8,6 +8,7 @@ public class MiniGamePoints : MonoBehaviour {
 	public GameObject other;
 	Movement player1;
 	Movement2 player2;
+//	public float timer = 3.0f;
 
 	void Start(){
 		player1 = (Movement) GameObject.Find ("Player1").GetComponent<Movement>();
@@ -24,6 +25,13 @@ public class MiniGamePoints : MonoBehaviour {
 		if (points >= goal) {
 			MiniGameReward();		
 		}
+
+//		if (timer > 0) {
+//			timer -= Time.deltaTime;
+//		}
+//		if (timer <= 0) {
+//			stopSpeedUp(player1);
+//		}
 	}
 
 	void MiniGameReward(){
@@ -32,11 +40,14 @@ public class MiniGamePoints : MonoBehaviour {
 		if (player1) {
 			Debug.Log(player1.name);
 			player1.coeffSpeedUp = 200f;
+			stopSpeedUp(player1);
 		}
 
-
-
-
 	}
+
+	void stopSpeedUp(Movement player){
+		player1.coeffSpeedUp = 100f;
+	}
+
 
 }
