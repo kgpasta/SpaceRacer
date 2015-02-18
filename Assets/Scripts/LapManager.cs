@@ -10,8 +10,7 @@ public class LapManager : MonoBehaviour
 		Transform Player1Text;
 		Transform Player2Text;
 
-		public GameObject minigame1;
-		public GameObject minigame2;
+		public GameObject minigamePrefab;
 
 		
 		// Use this for initialization
@@ -35,41 +34,35 @@ public class LapManager : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-			if (Input.GetKey (KeyCode.M)) {
-				startMiniGame (minigame1);
-			}
 		}
 
 		void OnTriggerEnter2D (Collider2D collider)
 		{
-				if (collider.gameObject.name.Equals ("Player1")) {
-						if (collider.gameObject.GetComponent<Movement> ().distanceTraveled > Mathf.PI * 3) {
-								int lapsPlayer1 = collider.gameObject.GetComponent<Movement> ().laps;
-								collider.gameObject.GetComponent<Movement> ().laps++;
-								lapsPlayer1++;
-								collider.gameObject.GetComponent<Movement> ().distanceTraveled = 0;
-								Player1Text.gameObject.GetComponent<Text> ().text = "Laps: " + lapsPlayer1;
-								startMiniGame (minigame1);
-						}
-				} else if (collider.gameObject.name.Equals ("Player2")) {
-						if (collider.gameObject.GetComponent<Movement2> ().distanceTraveled > Mathf.PI * 3) {
-								int lapsPlayer2 = collider.gameObject.GetComponent<Movement2> ().laps;
-								collider.gameObject.GetComponent<Movement2> ().laps++;
-								lapsPlayer2++;
-								collider.gameObject.GetComponent<Movement2> ().distanceTraveled = 0;
-								Player2Text.gameObject.GetComponent<Text> ().text = "Laps: " + lapsPlayer2;
-								startMiniGame (minigame2);
-						}
-				}
-
+			if (collider.gameObject.GetComponent<Player> ().distanceTraveled > Mathf.PI * 3) {
+					Player player = collider.gameObject.GetComponent<Player> ();
+					player.laps++;
+					player.distanceTraveled = 0;
+					Transform playerText = Player1Text;
+					if(player.playerName == "Player2"){
+						playerText = Player2Text;
+					}
+					playerText.gameObject.GetComponent<Text> ().text = "Laps: " + player.laps;
+					startMiniGame (minigamePrefab, collider.gameObject);
+			}
 		}
 
 		
 
-		void startMiniGame (GameObject minigame)
+		void startMiniGame (GameObject minigamePrefab, GameObject player)
 		{
 //			minigame.SetActive(true);
-			Instantiate (minigame);
+			GameObject minigame = (GameObject) Instantiate (minigamePrefab);
+			minigame.GetComponent<MiniGameTimer> ().mainGame = player; //Set main game
+
+			//Reset Camera
+		    Rect r = player.transform.GetChild(0).GetComponent<Camera> ().rect;
+			minigame.transform.GetChild (0).GetComponent<Camera> ().rect = new Rect (r.x, r.y, r.width, r.height);
+			player.SetActive (false);
 
 		}
 			

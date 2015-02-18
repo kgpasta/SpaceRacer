@@ -1,31 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MiniGameTimer1 : MonoBehaviour {
+public class MiniGameTimer : MonoBehaviour {
 
 	public float timer = 5.0f;
-	public GameObject mainGame1;
-//	public GameObject mainGame2;
-
+	public GameObject mainGame = null;
 	
 	// Use this for initialization
 	void Start () {
-		mainGame1 = GameObject.FindWithTag ("MainGame1");
 //		mainGame2 = GameObject.FindWithTag ("MainGame2");
 	}
 
 
 	// Update is called once per frame
 	void Update () {
-		if (mainGame1.activeSelf) {
-			pauseMainGame(mainGame1);
-		}
+
+//		if (mainGame != null && mainGame.activeSelf) {
+//			pauseMainGame(mainGame);
+//		}
 
 		if (timer > 0) {
 			timer -= Time.deltaTime;
 		}
 		if (timer <= 0) {
-			restartMainGame(mainGame1);
+			restartMainGame(mainGame);
 		}
 	}
 

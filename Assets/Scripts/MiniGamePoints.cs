@@ -6,13 +6,14 @@ public class MiniGamePoints : MonoBehaviour {
 	int points = 0;
 	public int goal = 4;
 	public GameObject other;
-	Movement player1;
+	Player player;
 //	Movement2 player2;
 //	public float timer = 3.0f;
 
 	void Start(){
-		player1 = (Movement) GameObject.Find ("Player1").GetComponent<Movement>();
+		//player1 = (Movement) GameObject.Find ("Player1").GetComponent<Movement>();
 //		player2 = (Movement2) GameObject.Find ("Player2").GetComponent<Movement2>();
+		player = this.transform.parent.GetComponent<MiniGameTimer> ().mainGame.GetComponent<Player>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -37,16 +38,16 @@ public class MiniGamePoints : MonoBehaviour {
 	void MiniGameReward(){
 		//Debug.Log ("SpeedBoost");
 
-		if (player1) {
-			Debug.Log(player1.name);
-			player1.coeffSpeedUp = 200f;
-			stopSpeedUp(player1);
+		if (player) {
+			Debug.Log(player.playerName);
+			player.coeffSpeedUp = 200f;
+			//stopSpeedUp(player);
 		}
 
 	}
 
-	void stopSpeedUp(Movement player){
-		player1.coeffSpeedUp = 100f;
+	void stopSpeedUp(Player player){
+		player.coeffSpeedUp = 100f;
 	}
 
 

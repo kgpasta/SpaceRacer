@@ -3,16 +3,37 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 
-	public float distanceTraveled;
-	private Vector3 previousPosition;
-	public int laps;
-	public float coeffSpeedUp = 100f;
+	public KeyCode up, right, left, down;
+	private Player player;
 
 	// Use this for initialization
 	void Start () {
-		previousPosition = this.transform.position;
-		laps = 0;
-		distanceTraveled = 0;
+		player = this.gameObject.GetComponent<Player>();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		// move left
+		if (Input.GetKey (left)) {
+			//Debug.Log ("Left Arrow has been hit");
+			rigidbody2D.AddTorque(1f);
+		}
+		// move right
+		if (Input.GetKey (right)) {
+			//Debug.Log ("Right Arrow has been hit");
+			rigidbody2D.AddTorque(-1f);
+		}
+		// move forward
+		if (Input.GetKey (up)) {
+			//Debug.Log ("Forward Arrow has been hit");
+			rigidbody2D.AddForce(transform.up*player.coeffSpeedUp) ;		
+		}
+		// move backward
+		if (Input.GetKey (down)) {
+			//Debug.Log ("Backward Arrow has been hit");
+			rigidbody2D.AddForce(-transform.up*100);		
+		}
+
 	}
 
 	//Stops rotation on collision 
@@ -24,37 +45,11 @@ public class Movement : MonoBehaviour {
 		rigidbody2D.angularVelocity = 3;
 	}
 
-	// Update is called once per frame
-	void Update () {
-
-		// move left
-		if (Input.GetKey (KeyCode.LeftArrow)) {
-			//Debug.Log ("Left Arrow has been hit");
-			rigidbody2D.AddTorque(1f);
-		}
-		// move right
-		if (Input.GetKey (KeyCode.RightArrow)) {
-			//Debug.Log ("Right Arrow has been hit");
-			rigidbody2D.AddTorque(-1f);
-		}
-		// move forward
-		if (Input.GetKey (KeyCode.UpArrow)) {
-//			Debug.Log ("Forward Arrow has been hit");
-			rigidbody2D.AddForce(transform.up*coeffSpeedUp) ;		
-		}
-		// move backward
-		if (Input.GetKey (KeyCode.DownArrow)) {
-			//Debug.Log ("Backward Arrow has been hit");
-			rigidbody2D.AddForce(-transform.up*100);		
-		}
-
-		//Update distance traveled
-		distanceTraveled += Vector3.Distance(this.transform.position, previousPosition);
-		previousPosition = this.transform.position;
-
+	public void setPlayer2Controls(){
+		//Set Player 2 controls
+		up = KeyCode.W;
+		down = KeyCode.S;
+		left = KeyCode.A;
+		right = KeyCode.D;
 	}
-//	void FixedUpdate(){
-//		rigidbody2D.AddForce (Vector2.);
-//	}
-
 }

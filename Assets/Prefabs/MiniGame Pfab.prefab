@@ -50,7 +50,7 @@ GameObject:
   - 4: {fileID: 470688}
   - 114: {fileID: 11470690}
   m_Layer: 10
-  m_Name: MiniGame1 Pfab
+  m_Name: MiniGame Pfab
   m_TagString: MiniGame1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 6
-  mainGame1: {fileID: 0}
+  mainGame: {fileID: 0}
 --- !u!114 &11470692
 MonoBehaviour:
   m_ObjectHideFlags: 1
