@@ -31,5 +31,8 @@ public class GameEvents : MonoBehaviour {
 		Camera cam = MainCamera.GetComponent<Camera> ();
 		cam.rect = new Rect (0f, 0f, 1f, 0.5f);
 
+		Sprite[] Spaceships = Resources.LoadAll<Sprite> ("RetroSpaceship");
+		player2.GetComponent<SpriteRenderer> ().sprite = Spaceships [7];
+
 		}
 }

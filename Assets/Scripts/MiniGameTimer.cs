@@ -41,4 +41,16 @@ public class MiniGameTimer : MonoBehaviour {
 		Destroy (gameObject);
 
 	}
+
+	public void setPlayer(GameObject player){
+		mainGame = player;
+
+		//Reset Camera
+		Rect r = player.transform.GetChild(0).GetComponent<Camera> ().rect;
+		this.GetComponentInChildren<Camera>().rect = new Rect (r.x, r.y, r.width, r.height);
+		player.SetActive (false);
+
+		//Set Sprite
+		this.GetComponentInChildren<SpriteRenderer> ().sprite = player.GetComponent<SpriteRenderer> ().sprite;
+	}
 }

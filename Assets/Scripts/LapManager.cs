@@ -57,13 +57,9 @@ public class LapManager : MonoBehaviour
 		{
 //			minigame.SetActive(true);
 			GameObject minigame = (GameObject) Instantiate (minigamePrefab);
-			minigame.GetComponent<MiniGameTimer> ().mainGame = player; //Set main game
+			minigame.GetComponent<MiniGameTimer> ().setPlayer (player);
 
-			//Reset Camera
-		    Rect r = player.transform.GetChild(0).GetComponent<Camera> ().rect;
-			minigame.transform.GetChild (0).GetComponent<Camera> ().rect = new Rect (r.x, r.y, r.width, r.height);
-			player.SetActive (false);
-
+			
 		}
 			
 }
