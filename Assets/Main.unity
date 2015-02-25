@@ -1244,6 +1244,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1147524633}
+  - 114: {fileID: 1147524634}
   m_Layer: 0
   m_Name: Track Manager
   m_TagString: Untagged
@@ -1265,6 +1266,18 @@ Transform:
   - {fileID: 1104201752}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1147524634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1147524632}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa07cc44edc51941aa809de6b4dc475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackPrefab: {fileID: 464476, guid: d9087235a5f084e408ff629de8cebf9c, type: 2}
 --- !u!1 &1174359169
 GameObject:
   m_ObjectHideFlags: 0
