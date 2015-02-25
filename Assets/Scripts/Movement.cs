@@ -3,38 +3,59 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 
-	public KeyCode up, right, left, down;
+	public KeyCode up, right, left, down, upgrade;
 	private Player player;
+	float boostTime = 50f;
+	float boostTimer;
 
 	// Use this for initialization
 	void Start () {
 		player = this.gameObject.GetComponent<Player>();
+		boostTimer = boostTime;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// move left
 		if (player.isEnabled){
-			if (Input.GetKey (left)) {
-				//Debug.Log ("Left Arrow has been hit");
-				rigidbody2D.AddTorque(1f);
-			}
-			// move right
-			if (Input.GetKey (right)) {
-				//Debug.Log ("Right Arrow has been hit");
-				rigidbody2D.AddTorque(-1f);
-			}
-			// move forward
-			if (Input.GetKey (up)) {
-				//Debug.Log ("Forward Arrow has been hit");
-				rigidbody2D.AddForce(transform.up*player.coeffSpeedUp) ;		
-			}
-			// move backward
-			if (Input.GetKey (down)) {
-				//Debug.Log ("Backward Arrow has been hit");
-				rigidbody2D.AddForce(-transform.up*100);		
-			}
+		if (Input.GetKey (left)) {
+			//Debug.Log ("Left Arrow has been hit");
+			rigidbody2D.AddTorque(1f);
 		}
+		// move right
+		if (Input.GetKey (right)) {
+			//Debug.Log ("Right Arrow has been hit");
+			rigidbody2D.AddTorque(-1f);
+		}
+		// move forward
+		if (Input.GetKey (up)) {
+			//Debug.Log ("Forward Arrow has been hit");
+			rigidbody2D.AddForce(transform.up * player.acceleration) ;		
+		}
+		// move backward
+		if (Input.GetKey (down)) {
+			//Debug.Log ("Backward Arrow has been hit");
+			rigidbody2D.AddForce(-transform.up * player.deceleration);		
+		}
+
+		if (Input.GetKey (upgrade) && player.hasBoost == true) {
+			rigidbody2D.AddForce(transform.up * player.speedBoost);
+			boostTimer -= 1f;
+
+			if (boostTimer <= 0) {
+//				player.speedBoost = 1f;
+				player.hasBoost = false;
+			}
+
+			Debug.Log (boostTimer);
+
+			if (player.hasBoost == false){
+				boostTimer = boostTime;
+			}
+
+		}
+		}
+
 
 	}
 
@@ -53,5 +74,6 @@ public class Movement : MonoBehaviour {
 		down = KeyCode.S;
 		left = KeyCode.A;
 		right = KeyCode.D;
+		upgrade = KeyCode.E;
 	}
 }

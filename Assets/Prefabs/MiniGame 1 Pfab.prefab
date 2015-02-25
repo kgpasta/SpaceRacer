@@ -34,7 +34,7 @@ GameObject:
   - 114: {fileID: 11470688}
   - 114: {fileID: 11470686}
   m_Layer: 11
-  m_Name: MiniGame Player1
+  m_Name: MiniGame Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ GameObject:
   - 4: {fileID: 470688}
   - 114: {fileID: 11470690}
   m_Layer: 10
-  m_Name: MiniGame Pfab
+  m_Name: MiniGame 1 Pfab
   m_TagString: MiniGame1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ GameObject:
   - 4: {fileID: 470690}
   - 114: {fileID: 11470692}
   m_Layer: 10
-  m_Name: MiniGameController
+  m_Name: BallDropper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +229,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: 1
-  other: {fileID: 0}
+  GoalTextPrefab: {fileID: 22454402, guid: 3cb6b197e470a41d5a34b604513121df, type: 2}
+  PointsTextPrefab: {fileID: 22454402, guid: 1bf540257fcb34efb90cf2dad6ecb5bd, type: 2}
+  RewardTextPrefab: {fileID: 22454402, guid: 53bbaee57fddf4b03b78873a66508964, type: 2}
+  playerGoalText: {fileID: 0}
+  playerPointsText: {fileID: 0}
+  playerRewardText: {fileID: 0}
 --- !u!114 &11470690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,7 +247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 6
-  mainGame: {fileID: 0}
+  mainGame: {fileID: 185236, guid: e04fae3a6a108bd4a81070a7c7912ee6, type: 2}
+  TimerTextPrefab: {fileID: 22454402, guid: db1705b89a2904ebdbcbc62cf9a133d1, type: 2}
 --- !u!114 &11470692
 MonoBehaviour:
   m_ObjectHideFlags: 1
