@@ -24,7 +24,7 @@ public class GameEvents : MonoBehaviour {
 		player1.GetComponent<Player>().playerName = "Player1";
 
 
-		player2 = (Transform) Instantiate (playerPrefab, new Vector3(-3.45f, -0.1f, -1f), Quaternion.identity);
+		player2 = (Transform) Instantiate (playerPrefab, new Vector3(-12.2f, -0.1f, -1f), Quaternion.identity);
 		player2.GetComponent<Player>().playerName = "Player2";
 		player2.GetComponent<Movement> ().setPlayer2Controls ();
 		Transform MainCamera = player2.GetChild (0);
