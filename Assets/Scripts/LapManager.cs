@@ -7,6 +7,7 @@ public class LapManager : MonoBehaviour
 
 		public Transform Player1TextPrefab;
 		public Transform Player2TextPrefab;
+		
 		Transform Player1Text;
 		Transform Player2Text;
 
@@ -39,15 +40,21 @@ public class LapManager : MonoBehaviour
 		void OnTriggerEnter2D (Collider2D collider)
 		{
 			if (collider.gameObject.GetComponent<Player> ().distanceTraveled > Mathf.PI * 3) {
-					Player player = collider.gameObject.GetComponent<Player> ();
-					player.laps++;
-					player.distanceTraveled = 0;
-					Transform playerText = Player1Text;
-					if(player.playerName == "Player2"){
-						playerText = Player2Text;
-					}
-					playerText.gameObject.GetComponent<Text> ().text = "Laps: " + player.laps;
+				Player player = collider.gameObject.GetComponent<Player> ();
+				player.laps++;
+				player.distanceTraveled = 0;
+				Transform playerText = Player1Text;
+				if(player.playerName == "Player2"){
+					playerText = Player2Text;
+				}
+				playerText.gameObject.GetComponent<Text> ().text = "Laps: " + player.laps;
+				if (player.laps >= 3){
+					// decide the winner
+					playerText.gameObject.GetComponent<Text>().text = "WINNER";
+				}
+				else{
 					startMiniGame (minigamePrefab, collider.gameObject);
+				}	
 			}
 		}
 

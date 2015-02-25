@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 	private Vector3 previousPosition;
 	public int laps;
 	public float coeffSpeedUp = 100f;
+	public bool isEnabled = false;
 	
 	// Use this for initialization
 	void Start () {
