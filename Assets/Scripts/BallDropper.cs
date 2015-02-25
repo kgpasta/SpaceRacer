@@ -1,22 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MiniGameController : MonoBehaviour {
+public class BallDropper : MonoBehaviour {
 
 
 	public GameObject ball;
+	Camera cam = Camera.current;
+	float height;
+	float width;
 
 	// Use this for initialization
 	void Start () {
 		StartCoroutine (Spawn ());
+		height = cam.orthographicSize*2f;
+		width = cam.aspect*height;
 	}
 	
 	IEnumerator Spawn() {
 		while (true) {
-			Vector3 spawnPosition = new Vector3 (Random.Range (-2f, 2f), transform.position.y, 0.0f);
+			Vector3 spawnPosition = new Vector3 (Random.Range (-width/2, width/2), transform.position.y, 0.0f);
 			Quaternion spawnRotation = Quaternion.identity;
 			Instantiate (ball, spawnPosition, spawnRotation);
 			yield return new WaitForSeconds (Random.Range (0.3f, 1f));
+
 		}
 	}
 

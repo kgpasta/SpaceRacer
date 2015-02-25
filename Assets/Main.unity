@@ -352,6 +352,7 @@ MonoBehaviour:
   Player1TextPrefab: {fileID: 22454402, guid: bd0b722b29cc34d49ad68c21adc08a2e, type: 2}
   Player2TextPrefab: {fileID: 22474376, guid: d82bf12c89b7d634cad11d18279622e0, type: 2}
   minigamePrefab: {fileID: 170688, guid: 83f92fd9daeff452c8a360bce63363c7, type: 2}
+  mainGame: {fileID: 185236, guid: e04fae3a6a108bd4a81070a7c7912ee6, type: 2}
 --- !u!1 &284964379
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6001e36bfe8f91b4b92f1b232ce47762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 485234, guid: e04fae3a6a108bd4a81070a7c7912ee6, type: 2}
+  playerPrefab: {fileID: 461868, guid: d0df7b706de7c46c5919e8b796b2a034, type: 2}
 --- !u!4 &887354276
 Transform:
   m_ObjectHideFlags: 0

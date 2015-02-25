@@ -11,6 +11,7 @@ public class LapManager : MonoBehaviour
 		Transform Player2Text;
 
 		public GameObject minigamePrefab;
+		public GameObject mainGame = null; 
 
 		
 		// Use this for initialization
@@ -22,12 +23,6 @@ public class LapManager : MonoBehaviour
 			Player2Text.SetParent (GameObject.FindObjectOfType<Canvas>().transform, false);
 			Player1Text.gameObject.GetComponent<Text> ().text = "Laps: 0";
 			Player2Text.gameObject.GetComponent<Text> ().text = "Laps: 0";
-			
-//			minigame1 = GameObject.FindWithTag ("MiniGame1");
-//			minigame1.SetActive (false);
-//			minigame2 = GameObject.FindWithTag ("MiniGame2");
-//			minigame2.SetActive (false);
-
 
 		}
 	
@@ -52,11 +47,19 @@ public class LapManager : MonoBehaviour
 		}
 
 		
-
+		
 		void startMiniGame (GameObject minigamePrefab, GameObject player)
 		{
 //			minigame.SetActive(true);
-			GameObject minigame = (GameObject) Instantiate (minigamePrefab);
+			GameObject minigame;
+
+			if(player.GetComponent<Player> ().playerName == "Player2"){
+				minigame = (GameObject) Instantiate (minigamePrefab, new Vector3(0f, -300f, 0f), Quaternion.identity);
+			}
+			else {
+				minigame = (GameObject) Instantiate (minigamePrefab);
+			}	
+
 			minigame.GetComponent<MiniGameTimer> ().setPlayer (player);
 
 			

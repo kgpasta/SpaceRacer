@@ -1,54 +1,103 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MiniGamePoints : MonoBehaviour {
 
 	int points = 0;
-	public int goal = 4;
-	public GameObject other;
+	public int goal;
+
 	Player player;
-//	Movement2 player2;
-//	public float timer = 3.0f;
+
+	public Transform GoalTextPrefab;
+	public Transform PointsTextPrefab;
+	public Transform RewardTextPrefab;
+
+	public Transform playerGoalText;
+	public Transform playerPointsText;
+	public Transform playerRewardText;
+
+
 
 	void Start(){
-		//player1 = (Movement) GameObject.Find ("Player1").GetComponent<Movement>();
-//		player2 = (Movement2) GameObject.Find ("Player2").GetComponent<Movement2>();
 		player = this.transform.parent.GetComponent<MiniGameTimer> ().mainGame.GetComponent<Player>();
-	}
+		playerGoalText = (Transform) Instantiate (GoalTextPrefab);
+		playerGoalText.SetParent (GameObject.FindObjectOfType<Canvas>().transform, false);
+		playerPointsText = (Transform) Instantiate (PointsTextPrefab);
+		playerPointsText.SetParent (GameObject.FindObjectOfType<Canvas>().transform, false);
 
+
+
+		if(player.playerName == "Player2"){
+			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (1f, 0.5f);
+			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f, 0.5f);
+
+			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (1f, 0.5f);
+			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f, 0.5f);
+		}
+
+		else {
+			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (1f, 1f);
+			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f, 1f);
+
+			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (1f, 1f);
+			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f, 1f);
+		}
+
+		playerGoalText.gameObject.GetComponent<Text> ().text = "Goal: " + goal;
+		playerPointsText.gameObject.GetComponent<Text> ().text = "Points: " + points;
+	
+	}
+	
 	void OnTriggerEnter2D(Collider2D other){
-		Debug.Log ("Trigger");
 		points++;
-		Debug.Log (points);
 	}
 
 	void Update() {
+
+
 		if (points >= goal) {
 			MiniGameReward();		
 		}
 
-//		if (timer > 0) {
-//			timer -= Time.deltaTime;
-//		}
-//		if (timer <= 0) {
-//			stopSpeedUp(player1);
-//		}
+		playerPointsText.gameObject.GetComponent<Text> ().text = "Points: " + points;
 	}
 
 	void MiniGameReward(){
-		//Debug.Log ("SpeedBoost");
-
 		if (player) {
-			Debug.Log(player.playerName);
-			player.coeffSpeedUp = 200f;
-			//stopSpeedUp(player);
+			speedBoost(player);
 		}
 
 	}
 
-	void stopSpeedUp(Player player){
-		player.coeffSpeedUp = 100f;
+	void speedBoost (Player player) {
+		player.hasBoost = true;
 	}
+
+	public void rewardNotification (){
+
+		playerRewardText = (Transform)Instantiate (RewardTextPrefab);
+		playerRewardText.SetParent (GameObject.FindObjectOfType<Canvas>().transform, false);
+
+		if (player.playerName == "Player2"){
+			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 0f);
+			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 0f);
+		}
+
+		if (player.hasBoost) {
+			Debug.Log ("Speed Boost Acquired!");
+			playerRewardText.gameObject.GetComponent<Text> ().text = "Speed Boost Acquired!";
+		}
+
+		else {
+			Debug.Log ("No Power-ups Acquired");
+			playerRewardText.gameObject.GetComponent<Text> ().color = Color.white;
+			playerRewardText.gameObject.GetComponent<Text> ().text = "No Power-ups Acquired";
+		}
+
+	}
+
+
 
 
 }
