@@ -14,24 +14,26 @@ public class Movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// move left
-		if (Input.GetKey (left)) {
-			//Debug.Log ("Left Arrow has been hit");
-			rigidbody2D.AddTorque(1f);
-		}
-		// move right
-		if (Input.GetKey (right)) {
-			//Debug.Log ("Right Arrow has been hit");
-			rigidbody2D.AddTorque(-1f);
-		}
-		// move forward
-		if (Input.GetKey (up)) {
-			//Debug.Log ("Forward Arrow has been hit");
-			rigidbody2D.AddForce(transform.up*player.coeffSpeedUp) ;		
-		}
-		// move backward
-		if (Input.GetKey (down)) {
-			//Debug.Log ("Backward Arrow has been hit");
-			rigidbody2D.AddForce(-transform.up*100);		
+		if (player.isEnabled){
+			if (Input.GetKey (left)) {
+				//Debug.Log ("Left Arrow has been hit");
+				rigidbody2D.AddTorque(1f);
+			}
+			// move right
+			if (Input.GetKey (right)) {
+				//Debug.Log ("Right Arrow has been hit");
+				rigidbody2D.AddTorque(-1f);
+			}
+			// move forward
+			if (Input.GetKey (up)) {
+				//Debug.Log ("Forward Arrow has been hit");
+				rigidbody2D.AddForce(transform.up*player.coeffSpeedUp) ;		
+			}
+			// move backward
+			if (Input.GetKey (down)) {
+				//Debug.Log ("Backward Arrow has been hit");
+				rigidbody2D.AddForce(-transform.up*100);		
+			}
 		}
 
 	}

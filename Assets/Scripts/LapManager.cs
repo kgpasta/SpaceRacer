@@ -7,6 +7,7 @@ public class LapManager : MonoBehaviour
 
 		public Transform Player1TextPrefab;
 		public Transform Player2TextPrefab;
+		
 		Transform Player1Text;
 		Transform Player2Text;
 
@@ -47,8 +48,14 @@ public class LapManager : MonoBehaviour
 						playerText = Player2Text;
 					}
 					playerText.gameObject.GetComponent<Text> ().text = "Laps: " + player.laps;
+				if (player.laps >= 3){
+					// decide the winner
+					playerText.gameObject.GetComponent<Text>().text = "WINNER";
+				}
+				else{
 					startMiniGame (minigamePrefab, collider.gameObject);
 			}
+		}
 		}
 
 		
