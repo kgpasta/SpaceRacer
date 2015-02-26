@@ -494,6 +494,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 181026, guid: 031f7a9739d123244a2fb2748fdbccee, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 031f7a9739d123244a2fb2748fdbccee, type: 2}
   m_RootGameObject: {fileID: 105944853}
@@ -545,6 +549,10 @@ Prefab:
     - target: {fileID: 481026, guid: 031f7a9739d123244a2fb2748fdbccee, type: 2}
       propertyPath: m_LocalScale.y
       value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 181026, guid: 031f7a9739d123244a2fb2748fdbccee, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 031f7a9739d123244a2fb2748fdbccee, type: 2}

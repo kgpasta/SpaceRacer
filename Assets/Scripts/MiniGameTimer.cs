@@ -2,73 +2,107 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class MiniGameTimer : MonoBehaviour {
+public class MiniGameTimer : MonoBehaviour
+{
 
-	public float timer;
-	public GameObject mainGame = null;
+    public float timer;
+    public GameObject mainGame = null;
 
-	Player player;
+    Player player;
 
-	public Transform TimerTextPrefab;
-	Transform playerTimerText;
+    public Transform TimerTextPrefab;
+    Transform playerTimerText;
+
+    public Transform IntroTextPrefab;
+    Transform introText;
+    bool gameEnabled = false;
+
+    BallDropper ballDropper;
+
+    // Use this for initialization
+    void Start()
+    {
+        player = mainGame.GetComponent<Player>();
+        playerTimerText = (Transform)Instantiate(TimerTextPrefab);
+        playerTimerText.SetParent(GameObject.FindObjectOfType<Canvas>().transform, false);
+
+        introText = (Transform)Instantiate(IntroTextPrefab);
+        introText.SetParent(GameObject.FindObjectOfType<Canvas>().transform, false);
+
+        if (player.playerName == "Player2")
+        {
+            playerTimerText.gameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+            playerTimerText.gameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+
+            introText.gameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0f);
+            introText.gameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0f);
+
+        }
+
+        
+
+        ballDropper = this.GetComponentInChildren<BallDropper>();
+
+        StartCoroutine(DisplayIntroText());
+    }
 
 
-	// Use this for initialization
-	void Start () {
+    // Update is called once per frame
+    void Update()
+    {
 
-		player = mainGame.GetComponent<Player> ();
-		playerTimerText = (Transform)Instantiate (TimerTextPrefab);
-		playerTimerText.SetParent (GameObject.FindObjectOfType<Canvas>().transform, false);
+        playerTimerText.gameObject.GetComponent<Text>().text = "Time: " + timer;
 
-		
-		if(player.playerName == "Player2"){
-			playerTimerText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 0.5f);
-			playerTimerText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 0.5f);
-		}
-	}
+        if (timer > 0f && gameEnabled)
+        {
+            timer -= Time.deltaTime;
+        }
+        if (timer <= 0f)
+        {
 
+            restartMainGame(mainGame);
 
-	// Update is called once per frame
-	void Update () {
+            // Get rid of minigame text
+            Destroy(playerTimerText.gameObject);
+            Destroy(gameObject.GetComponentInChildren<MiniGamePoints>().playerGoalText.gameObject);
+            Destroy(gameObject.GetComponentInChildren<MiniGamePoints>().playerPointsText.gameObject);
 
-		playerTimerText.gameObject.GetComponent<Text> ().text = "Time: " + timer;
+        }
 
-		if (timer > 0f) {
-			timer -= Time.deltaTime;
-		}
-		if (timer <= 0f) {
+    }
 
-			restartMainGame(mainGame);
+    void restartMainGame(GameObject maingame)
+    {
+        this.GetComponentInChildren<MiniGamePoints>().rewardNotification();
 
-			// Get rid of minigame text
-			Destroy(playerTimerText.gameObject);
-			Destroy(gameObject.GetComponentInChildren<MiniGamePoints>().playerGoalText.gameObject);
-			Destroy(gameObject.GetComponentInChildren<MiniGamePoints>().playerPointsText.gameObject);
-			
-		}
+        if (maingame.activeSelf != true)
+        {
+            maingame.gameObject.SetActive(true);
+        }
 
-	}
+        Destroy(gameObject);
+    }
 
-	void restartMainGame (GameObject maingame)
-	{
-		this.GetComponentInChildren<MiniGamePoints> ().rewardNotification ();
+    public void setPlayer(GameObject player)
+    {
+        mainGame = player;
 
-		if (maingame.activeSelf != true) {
-			maingame.gameObject.SetActive(true);
-		}
+        //Reset Camera
+        Rect r = player.transform.GetChild(0).GetComponent<Camera>().rect;
+        this.GetComponentInChildren<Camera>().rect = new Rect(r.x, r.y, r.width, r.height);
+        player.SetActive(false);
 
-		Destroy (gameObject);
-	}
+        //Set Sprite
+        this.GetComponentInChildren<SpriteRenderer>().sprite = player.GetComponent<SpriteRenderer>().sprite;
+    }
 
-	public void setPlayer(GameObject player){
-		mainGame = player;
+    IEnumerator DisplayIntroText()
+    {
+        ballDropper.gameObject.SetActive(false);
+        introText.gameObject.GetComponent<Text>().text = "Collect the objects!";
+        yield return new WaitForSeconds(1.5f);
 
-		//Reset Camera
-		Rect r = player.transform.GetChild(0).GetComponent<Camera> ().rect;
-		this.GetComponentInChildren<Camera>().rect = new Rect (r.x, r.y, r.width, r.height);
-		player.SetActive (false);
-
-		//Set Sprite
-		this.GetComponentInChildren<SpriteRenderer> ().sprite = player.GetComponent<SpriteRenderer> ().sprite;
-	}
+        gameEnabled = true;
+        ballDropper.gameObject.SetActive(true);
+    }
 }
