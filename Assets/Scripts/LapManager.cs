@@ -13,8 +13,9 @@ public class LapManager : MonoBehaviour
 
 		public GameObject minigamePrefab;
 		public GameObject mainGame = null; 
-
 		
+		public bool isWinner = false;
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -43,8 +44,9 @@ public class LapManager : MonoBehaviour
 						playerText = Player2Text;
 					}
 					playerText.gameObject.GetComponent<Text> ().text = "Laps: " + player.laps;
-				if (player.laps >= 3){
+				if (player.laps >= 3 && !isWinner){
 					// decide the winner
+					isWinner = true;
 					playerText.gameObject.GetComponent<Text>().text = "WINNER";
 				}
 				else{
