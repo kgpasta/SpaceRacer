@@ -7,7 +7,8 @@ public class SpriteChanger : MonoBehaviour {
 	public Sprite spriteForward;
 	public Sprite spriteReverse;
 
-	private SpriteRenderer spriteRenderer; 
+	private SpriteRenderer spriteRenderer;
+    Movement movement;
 
 
 	// Use this for initialization
@@ -16,22 +17,31 @@ public class SpriteChanger : MonoBehaviour {
 		if (spriteRenderer == null) {
 			spriteRenderer.sprite = spriteIdle;				
 		}
+        movement = gameObject.GetComponentInParent<Movement>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKey (KeyCode.UpArrow)) {
+		if (Input.GetKey(movement.up)) {
 			spriteRenderer.sprite = spriteForward;	
 		}
 
-		if (Input.GetKey (KeyCode.DownArrow)) {
+		if (Input.GetKey (movement.down)) {
 			spriteRenderer.sprite = spriteReverse;	
 		}
 
-		if (Input.GetKeyUp (KeyCode.UpArrow) || Input.GetKeyUp (KeyCode.DownArrow)) {
+		if (Input.GetKeyUp (movement.up) || Input.GetKeyUp (movement.down)) {
 			spriteRenderer.sprite = spriteIdle;	
 		}
 
 	}
+
+    public void SetSprites(Sprite[] Spaceships)
+    {
+        //Player 2 sprites
+        spriteIdle = Spaceships[7];
+        spriteForward = Spaceships[4];
+        spriteReverse = Spaceships[12];
+    }
 }

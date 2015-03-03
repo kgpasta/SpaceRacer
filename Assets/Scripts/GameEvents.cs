@@ -33,7 +33,9 @@ public class GameEvents : MonoBehaviour {
 		player1.GetComponent<Player>().playerName = "Player1";
 
 
-		player2 = (Transform) Instantiate (playerPrefab, new Vector3(-4.25f, -0.1f, -1f), Quaternion.identity);
+		player2 = (Transform) Instantiate (playerPrefab, new Vector3(-19.25f, -0.2f, -1f), Quaternion.identity);
+        player2.Rotate(0f, 0f, 348f);
+        player2.localScale = new Vector3(0.2f, -0.2f, 0.2f);
 		player2.GetComponent<Player>().playerName = "Player2";
 		player2.GetComponent<Movement> ().setPlayer2Controls ();
 
@@ -43,6 +45,8 @@ public class GameEvents : MonoBehaviour {
 
 		Sprite[] Spaceships = Resources.LoadAll<Sprite> ("RetroSpaceship");
 		player2.GetComponent<SpriteRenderer> ().sprite = Spaceships [7];
+
+        player2.GetComponent<SpriteChanger>().SetSprites(Spaceships);
 
 		gametext = (Transform)Instantiate (GametextPrefab);
 		gametext.SetParent(GameObject.FindObjectOfType<Canvas> ().transform, false);

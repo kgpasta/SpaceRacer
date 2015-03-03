@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class BackgroundGenerator : MonoBehaviour {
-    const int WorldSize = 20;
+    const int WorldSize = 30;
     public GameObject BackgroundTile;
 
 	// Use this for initialization

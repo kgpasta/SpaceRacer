@@ -62,10 +62,12 @@ public class Movement : MonoBehaviour {
 	//Stops rotation on collision 
 	void OnCollisionEnter2D(Collision2D collision) {
 		rigidbody2D.angularVelocity = 0;
+        rigidbody2D.drag = 1;
 	}
 	
 	void OnCollisionExit2D(Collision2D collision){
 		rigidbody2D.angularVelocity = 3;
+        rigidbody2D.drag = 0.5f;
 	}
 
 	public void setPlayer2Controls(){
