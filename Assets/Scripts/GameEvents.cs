@@ -30,6 +30,7 @@ public class GameEvents : MonoBehaviour {
 	void GameStart(){
 		//Time.timeScale = 0;
 		player1 = (Transform) Instantiate (playerPrefab);
+		player1.name = "player1";
 		player1.GetComponent<Player>().playerName = "Player1";
 
 
@@ -41,7 +42,9 @@ public class GameEvents : MonoBehaviour {
 
 		Transform MainCamera = player2.GetChild (0);
 		Camera cam = MainCamera.GetComponent<Camera> ();
-		cam.rect = new Rect (0f, 0f, 1f, 0.5f);
+
+		// view point rect for camera 2
+		cam.rect = new Rect (0.5f, 0f, 0.5f, 1f);
 
 		Sprite[] Spaceships = Resources.LoadAll<Sprite> ("RetroSpaceship");
 		player2.GetComponent<SpriteRenderer> ().sprite = Spaceships [7];
