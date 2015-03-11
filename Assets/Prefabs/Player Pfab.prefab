@@ -177,7 +177,7 @@ MonoBehaviour:
   speedBoost: 300
   coeffSpeedUp: 100
   isEnabled: 0
-  icon: {fileID: 155142, guid: 03d9305cb61874c7ca4feffb125c261e, type: 2}
+  icon: {fileID: 120686, guid: 0952b1d587d77ec429e9bc6b651901e3, type: 2}
 --- !u!114 &11461870
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -45,6 +45,7 @@ public class Movement : MonoBehaviour {
 			if (boostTimer <= 0) {
 //				player.speedBoost = 1f;
 				player.hasBoost = false;
+                player.icon.SetActive(false);
 			}
 
 			Debug.Log (boostTimer);

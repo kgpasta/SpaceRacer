@@ -21,9 +21,9 @@ public class Player : MonoBehaviour {
 		previousPosition = this.transform.position;
 		laps = 0;
 		distanceTraveled = 0;
-//		Instantiate (icon);
-//		icon.transform.parent = this.transform;
-
+		icon = (GameObject) Instantiate (icon);
+		icon.transform.SetParent(GameObject.FindObjectOfType<Canvas>().transform, false);
+        icon.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -31,15 +31,16 @@ public class Player : MonoBehaviour {
 		//Update distance traveled
 		distanceTraveled += Vector3.Distance(this.transform.position, previousPosition);
 		previousPosition = this.transform.position;
-//		displayRewardIcon ();
-//		Debug.Log (icon.transform.parent);
+		displayRewardIcon ();
 
 	}
 
-//	void displayRewardIcon () {
-//		if (hasBoost) {
-//
-//		}
-//
-//	}
+    void displayRewardIcon()
+    {
+        if (hasBoost)
+        {
+            icon.SetActive(true);
+        }
+
+    }
 }
