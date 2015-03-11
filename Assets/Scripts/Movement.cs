@@ -70,7 +70,7 @@ public class Movement : MonoBehaviour {
         rigidbody2D.drag = 0.5f;
 	}
 
-	public void setPlayer2Controls(){
+	public void setPlayer1Controls(){
 		//Set Player 2 controls
 		up = KeyCode.W;
 		down = KeyCode.S;

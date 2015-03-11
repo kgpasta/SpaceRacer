@@ -29,15 +29,22 @@ public class MiniGameTimer : MonoBehaviour
         introText = (Transform)Instantiate(IntroTextPrefab);
         introText.SetParent(GameObject.FindObjectOfType<Canvas>().transform, false);
 
-        if (player.playerName == "Player2")
-        {
-            playerTimerText.gameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
-            playerTimerText.gameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+        if (player.playerName == "Player1") {
+			playerTimerText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.1f, 0.1f);
+			playerTimerText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.1f, 0.1f);
 
-            introText.gameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0f);
-            introText.gameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0f);
+			introText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.25f, 0.5f);
+			introText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.25f, 0.5f);
 
-        }
+		} 
+		else {
+			playerTimerText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.6f, 0.1f);
+			playerTimerText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.6f, 0.1f);
+			
+			introText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.75f, 0.5f);
+			introText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.75f, 0.5f);		
+		}
+
 
         
 

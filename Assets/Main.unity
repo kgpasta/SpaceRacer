@@ -273,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 461868, guid: d0df7b706de7c46c5919e8b796b2a034, type: 2}
   GametextPrefab: {fileID: 22474376, guid: bcf090e034e9448db9d7e6c8ddc1f33b, type: 2}
+  gametext: {fileID: 0}
 --- !u!4 &887354276
 Transform:
   m_ObjectHideFlags: 0

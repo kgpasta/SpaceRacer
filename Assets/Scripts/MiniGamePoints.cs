@@ -29,19 +29,19 @@ public class MiniGamePoints : MonoBehaviour {
 
 
 		if(player.playerName == "Player2"){
-			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (1f, 0.5f);
-			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f, 0.5f);
-
-			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (1f, 0.5f);
-			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f, 0.5f);
-		}
-
-		else {
 			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (1f, 1f);
 			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f, 1f);
 
 			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (1f, 1f);
 			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (1f, 1f);
+		}
+
+		else {
+			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 1f);
+			playerGoalText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 1f);
+
+			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 1f);
+			playerPointsText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 1f);
 		}
 
 		playerGoalText.gameObject.GetComponent<Text> ().text = "Goal: " + goal;
@@ -79,9 +79,13 @@ public class MiniGamePoints : MonoBehaviour {
 		playerRewardText = (Transform)Instantiate (RewardTextPrefab);
 		playerRewardText.SetParent (GameObject.FindObjectOfType<Canvas>().transform, false);
 
-		if (player.playerName == "Player2"){
-			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 0f);
-			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 0f);
+		if (player.playerName == "Player2") {
+			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.75f, 0.3f);
+			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.75f, 0.3f);
+		} 
+		else {
+			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.25f, 0.3f);
+			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.25f, 0.3f);
 		}
 
 		if (player.hasBoost) {
