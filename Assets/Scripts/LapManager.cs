@@ -13,6 +13,7 @@ public class LapManager : MonoBehaviour
 
 		public GameObject minigamePrefab;
 		public GameObject mainGame = null; 
+		public GameObject player1;
 		
 		public bool isWinner = false;
 
@@ -25,17 +26,23 @@ public class LapManager : MonoBehaviour
 			Player2Text.SetParent (GameObject.FindObjectOfType<Canvas>().transform, false);
 			Player1Text.gameObject.GetComponent<Text> ().text = "Laps: 0";
 			Player2Text.gameObject.GetComponent<Text> ().text = "Laps: 0";
-
+			
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
+			
+
+			if (Input.GetKey (KeyCode.M)) {
+				player1 = GameObject.FindGameObjectWithTag ("MainGame1");
+				startMiniGame (minigamePrefab, player1);
+			}
 		}
 
 		void OnTriggerEnter2D (Collider2D collider)
 		{
-			if (collider.gameObject.GetComponent<Player> ().distanceTraveled > Mathf.PI * 3) {
+			if (collider.gameObject.GetComponent<Player> ().distanceTraveled > Mathf.PI * .1) {
 					Player player = collider.gameObject.GetComponent<Player> ();
 					player.laps++;
 					player.distanceTraveled = 0;
