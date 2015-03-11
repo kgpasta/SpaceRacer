@@ -33,7 +33,7 @@ public class LapManager : MonoBehaviour
 		void Update ()
 		{
 			
-
+			// temporary remove
 			if (Input.GetKey (KeyCode.M)) {
 				player1 = GameObject.FindGameObjectWithTag ("MainGame1");
 				startMiniGame (minigamePrefab, player1);
@@ -42,6 +42,7 @@ public class LapManager : MonoBehaviour
 
 		void OnTriggerEnter2D (Collider2D collider)
 		{
+		/// temporary change .1 to 3
 			if (collider.gameObject.GetComponent<Player> ().distanceTraveled > Mathf.PI * .1) {
 					Player player = collider.gameObject.GetComponent<Player> ();
 					player.laps++;
