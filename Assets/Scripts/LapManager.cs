@@ -38,7 +38,7 @@ public class LapManager : MonoBehaviour
 		void OnTriggerEnter2D (Collider2D collider)
 		{
 		/// temporary change .1 to 3
-			if (collider.gameObject.GetComponent<Player> ().distanceTraveled > Mathf.PI * 3) {
+			if (collider.gameObject.GetComponent<Player> ().distanceTraveled > collider.gameObject.GetComponent<Player> ().lapTriggerDistance) {
 					Player player = collider.gameObject.GetComponent<Player> ();
 					player.laps++;
 					player.distanceTraveled = 0;

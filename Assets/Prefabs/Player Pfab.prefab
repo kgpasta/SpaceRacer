@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 
   distanceTraveled: 0
+  lapTriggerDistance: 1
   laps: 0
   acceleration: 150
   deceleration: 50

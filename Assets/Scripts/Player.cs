@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
 
 	public string playerName;
 	public float distanceTraveled;
+	public float lapTriggerDistance;
 	private Vector3 previousPosition;
 	public int laps;
 	public float acceleration;

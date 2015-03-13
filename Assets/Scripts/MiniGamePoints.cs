@@ -4,7 +4,7 @@ using System.Collections;
 
 public class MiniGamePoints : MonoBehaviour {
 
-	int points = 0;
+	public int points = 0;
 	public int goal;
 
 	Player player;
@@ -16,6 +16,8 @@ public class MiniGamePoints : MonoBehaviour {
 	public Transform playerGoalText;
 	public Transform playerPointsText;
 	public Transform playerRewardText;
+
+
 
 
 
@@ -89,12 +91,10 @@ public class MiniGamePoints : MonoBehaviour {
 		}
 
 		if (player.hasBoost) {
-			Debug.Log ("Speed Boost Acquired!");
 			playerRewardText.gameObject.GetComponent<Text> ().text = "Speed Boost Acquired!";
 		}
 
 		else {
-			Debug.Log ("No Power-ups Acquired");
 			playerRewardText.gameObject.GetComponent<Text> ().color = Color.white;
 			playerRewardText.gameObject.GetComponent<Text> ().text = "No Power-ups Acquired";
 		}
