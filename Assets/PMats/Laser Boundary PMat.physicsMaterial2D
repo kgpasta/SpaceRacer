@@ -6,5 +6,5 @@ PhysicsMaterial2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Laser Boundary PMat
-  friction: 0
-  bounciness: .800000012
+  friction: .800000012
+  bounciness: .5
