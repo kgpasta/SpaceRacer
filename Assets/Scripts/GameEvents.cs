@@ -33,7 +33,7 @@ public class GameEvents : MonoBehaviour {
 		player1.GetComponent<Player>().playerName = "Player1";
 		player1.GetComponent<Movement> ().setPlayer1Controls ();
 
-		player2 = (Transform) Instantiate (playerPrefab, new Vector3(-19.25f, -0.2f, -1f), Quaternion.identity);
+		player2 = (Transform) Instantiate (playerPrefab, new Vector3(-11.6f, -0.16f, -1f), Quaternion.identity);
         player2.name = "player2";
         player2.Rotate(0f, 0f, 348f);
         player2.localScale = new Vector3(0.2f, -0.2f, 0.2f);
