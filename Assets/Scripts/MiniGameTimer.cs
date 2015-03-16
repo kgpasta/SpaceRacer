@@ -18,6 +18,7 @@ public class MiniGameTimer : MonoBehaviour
     bool gameEnabled = false;
 
     BallDropper ballDropper;
+	Spawner spawner;
 
 	Camera cam;
 
@@ -55,7 +56,14 @@ public class MiniGameTimer : MonoBehaviour
 			cam.backgroundColor = camcolor;
 		}
 
-			ballDropper = this.GetComponentInChildren<BallDropper>();		
+			if (minigameType == 1) {
+				ballDropper = this.GetComponentInChildren<BallDropper>();	
+			}
+
+			if (minigameType == 2) {
+				spawner = this.GetComponentInChildren<Spawner>();
+			}
+
         
 
         StartCoroutine(DisplayIntroText());
@@ -120,10 +128,13 @@ public class MiniGameTimer : MonoBehaviour
 		}
 
 		if (minigameType == 2) {
-			introText.gameObject.GetComponent<Text>().text = "Shoot the asteroids!";
+			spawner.gameObject.SetActive(false);
+			introText.gameObject.GetComponent<Text>().text = "Shoot the objects!";
 			yield return new WaitForSeconds(2f);
 			
 			gameEnabled = true;
+			spawner.gameObject.SetActive(true);
+
 		}
        
     }
