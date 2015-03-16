@@ -14,7 +14,6 @@ public class GameEvents : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameStart ();
-	
 	}
 	
 	// Update is called once per frame
@@ -24,7 +23,7 @@ public class GameEvents : MonoBehaviour {
 			player2.GetComponent<Player> ().isEnabled = false;
 	
 			gametext.gameObject.GetComponent<Text> ().text = "Game Over!";
-	}
+		}
 	}
 
 	void GameStart(){
@@ -60,7 +59,7 @@ public class GameEvents : MonoBehaviour {
 		gametext.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 0.5f);
 		gametext.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 0.5f);
 
-		StartCoroutine (Countdown ());
+		StartCoroutine (Countdown ());	
 	}
 
 	bool IsGameOver(){
@@ -72,7 +71,6 @@ public class GameEvents : MonoBehaviour {
 	}
 
 	IEnumerator Countdown () {
-
 		int i = 3;
 		while (i >0) {
 			gametext.gameObject.GetComponent<Text> ().text = i.ToString();
@@ -86,5 +84,5 @@ public class GameEvents : MonoBehaviour {
 		player1.GetComponent<Player> ().isEnabled = true;
 		player2.GetComponent<Player> ().isEnabled = true;
 
-		}
+	}
 }
