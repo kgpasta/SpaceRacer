@@ -177,7 +177,7 @@ MonoBehaviour:
   hasBoost: 0
   speedBoost: 300
   coeffSpeedUp: 100
-  hasMissile: 1
+  hasMissile: 0
   hasShield: 0
   isEnabled: 0
   BoostIconPfab: {fileID: 192852, guid: 3c85577881da27244a0daf1baf1ed800, type: 2}
@@ -203,6 +203,8 @@ MonoBehaviour:
   down: 274
   upgrade: 303
   MissilePrefab: {fileID: 479174, guid: 4a03570dc6f913e40ba9b0b75ff73e87, type: 2}
+  ShieldPrefab: {fileID: 487884, guid: 53508a514032ecc44bf2549dd03a56cd, type: 2}
+  shieldActive: 0
 --- !u!114 &11461872
 MonoBehaviour:
   m_ObjectHideFlags: 1
