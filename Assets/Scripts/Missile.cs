@@ -37,7 +37,7 @@ public class Missile : MonoBehaviour {
             {
                 if (!other.GetComponent<Movement>().shieldActive)
                 {
-                    other.rigidbody2D.velocity = Vector2.zero;
+                    other.GetComponent<Movement>().missileHit();
                 }
             }
             Destroy(transform.gameObject);

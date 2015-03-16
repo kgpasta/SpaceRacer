@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour {
 	float boostTimer;
     float shieldTime = 15f;
     public bool shieldActive = false;
+    bool hitByMissile = false;
+    float missileTime = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -88,10 +90,23 @@ public class Movement : MonoBehaviour {
                 {
                     shieldActive = false;
                     Shield.gameObject.SetActive(false);
+                    shieldTime = 1f;
                 }
             }
 
 		}
+
+        if (hitByMissile)
+        {
+            missileTime -= Time.deltaTime;
+            transform.Rotate(0f, 0f, missileTime / 1f * 90);
+            if (missileTime <= 0)
+            {
+                player.isEnabled = true;
+                hitByMissile = false;
+                missileTime = 1f;
+            }
+        }
 	}
 
 	//Stops rotation on collision 
@@ -116,4 +131,10 @@ public class Movement : MonoBehaviour {
 		right = KeyCode.D;
 		upgrade = KeyCode.E;
 	}
+
+    public void missileHit() {
+        rigidbody2D.velocity = Vector2.zero;
+        player.isEnabled = false;
+        hitByMissile = true;
+    }
 }
