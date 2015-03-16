@@ -17,6 +17,9 @@ public class MiniGamePoints : MonoBehaviour {
 	public Transform playerPointsText;
 	public Transform playerRewardText;
 
+	public GameObject highlight;
+	GameObject popup; 
+
 	int minigameType;
 
 
@@ -54,6 +57,7 @@ public class MiniGamePoints : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (minigameType == 1) {
 			points++;	
+			StartCoroutine(highlightPlayer());
 		}
 
 		if (minigameType == 2) {
@@ -67,6 +71,9 @@ public class MiniGamePoints : MonoBehaviour {
 	void Update() {
 
 		playerPointsText.gameObject.GetComponent<Text> ().text = "Points: " + points;
+		if (popup) {
+			popup.transform.position = gameObject.transform.position;
+		}
 	}
 
 	void MiniGameReward(){
@@ -111,7 +118,7 @@ public class MiniGamePoints : MonoBehaviour {
 		}
 
 		if (player.hasBoost) {
-				playerRewardText.gameObject.GetComponent<Text> ().text = "Speed Boost Acquired! Press " + button + " to boost!";
+				playerRewardText.gameObject.GetComponent<Text> ().text = "Speed Boost Acquired! Hold " + button + " to boost!";
 		}
 
         else if (player.hasMissile) {
@@ -129,6 +136,14 @@ public class MiniGamePoints : MonoBehaviour {
         }
 
 	}
+
+	IEnumerator highlightPlayer(){
+		popup = (GameObject)Instantiate (highlight, transform.position, Quaternion.identity);
+		yield return new WaitForSeconds(0.2f);
+		Destroy (popup);
+	}
+
+
 
 
 

@@ -24,11 +24,14 @@ public class MiniGameTimer : MonoBehaviour
 
 	int minigameType;
 
+
+
     // Use this for initialization
     void Start()
     {
 		cam = gameObject.GetComponentInChildren<Camera> ().camera;
 		player = mainGame.GetComponent<Player>();
+
         playerTimerText = (Transform)Instantiate(TimerTextPrefab);
         playerTimerText.SetParent(GameObject.FindObjectOfType<Canvas>().transform, false);
 
@@ -44,6 +47,7 @@ public class MiniGameTimer : MonoBehaviour
 			introText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.25f, 0.5f);
 			introText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.25f, 0.5f);
 
+
 		} 
 		else {
 			playerTimerText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.75f, 1f);
@@ -54,6 +58,7 @@ public class MiniGameTimer : MonoBehaviour
 
 			Color camcolor = new Color (0f/255f, 220f/255f, 251f/255f, 5f/255f);
 			cam.backgroundColor = camcolor;
+
 		}
 
 			if (minigameType == 1) {
@@ -113,14 +118,14 @@ public class MiniGameTimer : MonoBehaviour
         player.SetActive(false);
 
         //Set Sprite
-        this.GetComponentInChildren<SpriteRenderer>().sprite = player.GetComponent<SpriteRenderer>().sprite;
+        this.GetComponentInChildren<SpriteRenderer>().sprite = player.GetComponent<SpriteChanger>().spriteIdle;
     }
 
     IEnumerator DisplayIntroText()
     {
 		if (minigameType == 1) {
 			ballDropper.gameObject.SetActive(false);
-			introText.gameObject.GetComponent<Text>().text = "Collect " + gameObject.GetComponentInChildren<MiniGamePoints>().goal.ToString() + " falling objects!";
+			introText.gameObject.GetComponent<Text>().text = "Collect " + gameObject.GetComponentInChildren<MiniGamePoints>().goal.ToString() + " coins!";
 			yield return new WaitForSeconds(2f);
 			
 			gameEnabled = true;
