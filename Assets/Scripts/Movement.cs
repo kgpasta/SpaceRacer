@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour {
 	private Player player;
 	float boostTime = 50f;
 	float boostTimer;
-    float shieldTime = 20f;
+    float shieldTime = 15f;
     public bool shieldActive = false;
 
 	// Use this for initialization
@@ -78,6 +78,7 @@ public class Movement : MonoBehaviour {
                 Shield.SetParent(this.transform);
                 shieldActive = true;
                 player.hasShield = false;
+                player.ShieldIcon.SetActive(false);
             }
 
             if (shieldActive)
