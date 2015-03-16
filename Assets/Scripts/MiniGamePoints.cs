@@ -67,13 +67,22 @@ public class MiniGamePoints : MonoBehaviour {
 
 	void MiniGameReward(){
 		if (player) {
-			speedBoost(player);
+			upgrade(player, Random.value);
 		}
 
 	}
 
-	void speedBoost (Player player) {
-		player.hasBoost = true;
+	void upgrade (Player player, float random) {
+        if (random <= 0.33) {
+            player.hasBoost = true;
+        }
+        else if (random <= 0.66)
+        {
+            player.hasMissile = true;
+        }
+        else {
+            player.hasShield = true;
+        }
 	}
 
 	public void rewardNotification (){
@@ -101,10 +110,19 @@ public class MiniGamePoints : MonoBehaviour {
 			}
 		}
 
-		else {
-			playerRewardText.gameObject.GetComponent<Text> ().color = Color.white;
-			playerRewardText.gameObject.GetComponent<Text> ().text = "No Power-ups Acquired";
-		}
+        else if (player.hasMissile) {
+            playerRewardText.gameObject.GetComponent<Text>().text = "Missile Acquired!";
+        }
+        else if (player.hasShield)
+        {
+            playerRewardText.gameObject.GetComponent<Text>().text = "Shield Acquired!";
+        }
+
+        else
+        {
+            playerRewardText.gameObject.GetComponent<Text>().color = Color.white;
+            playerRewardText.gameObject.GetComponent<Text>().text = "No Power-ups Acquired";
+        }
 
 	}
 
