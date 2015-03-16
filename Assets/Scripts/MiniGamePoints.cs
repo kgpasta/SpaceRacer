@@ -17,6 +17,9 @@ public class MiniGamePoints : MonoBehaviour {
 	public Transform playerPointsText;
 	public Transform playerRewardText;
 
+	int minigameType;
+
+
 
 
 
@@ -28,6 +31,7 @@ public class MiniGamePoints : MonoBehaviour {
 		playerPointsText = (Transform) Instantiate (PointsTextPrefab);
 		playerPointsText.SetParent (GameObject.FindObjectOfType<Canvas>().transform, false);
 
+		minigameType = gameObject.GetComponentInChildren<MiniGameMovement>().minigameType;
 
 
 		if(player.playerName == "Player2"){
@@ -52,7 +56,16 @@ public class MiniGamePoints : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D other){
-		points++;
+		if (minigameType == 1) {
+			points++;	
+		}
+
+		if (minigameType == 2) {
+			//death
+			//exit minigame
+			//notification that no reward was given
+		}
+		    
 	}
 
 	void Update() {

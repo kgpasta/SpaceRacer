@@ -50,24 +50,8 @@ GameObject:
   - 4: {fileID: 470688}
   - 114: {fileID: 11470690}
   m_Layer: 10
-  m_Name: MiniGame 1 Pfab
+  m_Name: MiniGame 2 Pfab
   m_TagString: MiniGame1
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &170690
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 470690}
-  - 114: {fileID: 11470692}
-  m_Layer: 10
-  m_Name: BallDropper
-  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,21 +92,8 @@ Transform:
   m_Children:
   - {fileID: 470684}
   - {fileID: 470686}
-  - {fileID: 470690}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &470690
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.11999989, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 470688}
-  m_RootOrder: 2
 --- !u!20 &2070684
 Camera:
   m_ObjectHideFlags: 1
@@ -206,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b876b5cab73d049a3bdde9a499019f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigameType: 1
+  minigameType: 2
 --- !u!114 &11470686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,18 +223,6 @@ MonoBehaviour:
   mainGame: {fileID: 0}
   TimerTextPrefab: {fileID: 22454402, guid: db1705b89a2904ebdbcbc62cf9a133d1, type: 2}
   IntroTextPrefab: {fileID: 22496306, guid: 4e6ae7a9e0015c24a8d8c36459448591, type: 2}
---- !u!114 &11470692
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ac9e7dc4d7341559cbd8cb0aa5dc0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ball: {fileID: 109256, guid: 100efcc28647840cebeb30398b736582, type: 2}
 --- !u!124 &12470684
 Behaviour:
   m_ObjectHideFlags: 1

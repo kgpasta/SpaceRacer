@@ -21,6 +21,8 @@ public class MiniGameTimer : MonoBehaviour
 
 	Camera cam;
 
+	int minigameType;
+
     // Use this for initialization
     void Start()
     {
@@ -32,7 +34,9 @@ public class MiniGameTimer : MonoBehaviour
         introText = (Transform)Instantiate(IntroTextPrefab);
         introText.SetParent(GameObject.FindObjectOfType<Canvas>().transform, false);
 
-        if (player.playerName == "Player1") {
+		minigameType = gameObject.GetComponentInChildren<MiniGameMovement>().minigameType;
+        
+		if (player.playerName == "Player1") {
 			playerTimerText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.25f, 1f);
 			playerTimerText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.25f, 1f);
 
@@ -51,10 +55,8 @@ public class MiniGameTimer : MonoBehaviour
 			cam.backgroundColor = camcolor;
 		}
 
-
+			ballDropper = this.GetComponentInChildren<BallDropper>();		
         
-
-        ballDropper = this.GetComponentInChildren<BallDropper>();
 
         StartCoroutine(DisplayIntroText());
     }
@@ -73,22 +75,8 @@ public class MiniGameTimer : MonoBehaviour
         }
         if (timer <= 0f)
         {
-
             restartMainGame(mainGame);
-
-            // Get rid of minigame text
-//            Destroy(playerTimerText.gameObject);
-//            Destroy(gameObject.GetComponentInChildren<MiniGamePoints>().playerGoalText.gameObject);
-//            Destroy(gameObject.GetComponentInChildren<MiniGamePoints>().playerPointsText.gameObject);
-
         }
-
-//		if (gameObject.GetComponentInChildren<MiniGamePoints> ().points == gameObject.GetComponentInChildren<MiniGamePoints> ().goal) 
-//		{
-//			restartMainGame(mainGame);
-//
-//		}
-
     }
 
     public void restartMainGame(GameObject maingame)
@@ -122,11 +110,21 @@ public class MiniGameTimer : MonoBehaviour
 
     IEnumerator DisplayIntroText()
     {
-        ballDropper.gameObject.SetActive(false);
-		introText.gameObject.GetComponent<Text>().text = "Collect " + gameObject.GetComponentInChildren<MiniGamePoints>().goal.ToString() + " objects!";
-        yield return new WaitForSeconds(2f);
+		if (minigameType == 1) {
+			ballDropper.gameObject.SetActive(false);
+			introText.gameObject.GetComponent<Text>().text = "Collect " + gameObject.GetComponentInChildren<MiniGamePoints>().goal.ToString() + " falling objects!";
+			yield return new WaitForSeconds(2f);
+			
+			gameEnabled = true;
+			ballDropper.gameObject.SetActive(true);
+		}
 
-        gameEnabled = true;
-        ballDropper.gameObject.SetActive(true);
+		if (minigameType == 2) {
+			introText.gameObject.GetComponent<Text>().text = "Shoot the asteroids!";
+			yield return new WaitForSeconds(2f);
+			
+			gameEnabled = true;
+		}
+       
     }
 }
