@@ -93,11 +93,11 @@ public class MiniGamePoints : MonoBehaviour {
 		if (player.hasBoost) {
 			if (player.playerName=="Player2")
 			{	
-				playerRewardText.gameObject.GetComponent<Text> ().text = "Speed Boost Acquired! Press Shift to use";
+				playerRewardText.gameObject.GetComponent<Text> ().text = "Speed Boost Acquired! Press Shift to boost!";
 			}
 			else if (player.playerName=="Player1")
 			{
-				playerRewardText.gameObject.GetComponent<Text>().text = "Speed Boost Acquired! Press E to use";
+				playerRewardText.gameObject.GetComponent<Text>().text = "Speed Boost Acquired! Press E to boost!";
 			}
 		}
 
