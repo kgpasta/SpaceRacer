@@ -5,10 +5,14 @@ public class Movement : MonoBehaviour {
 
 	public KeyCode up, right, left, down, upgrade;
     public Transform MissilePrefab;
+    public Transform ShieldPrefab;
     Transform Missile;
+    Transform Shield;
 	private Player player;
 	float boostTime = 50f;
 	float boostTimer;
+    float shieldTime = 20f;
+    public bool shieldActive = false;
 
 	// Use this for initialization
 	void Start () {
@@ -68,6 +72,23 @@ public class Movement : MonoBehaviour {
                 player.hasMissile = false;
                 player.MissileIcon.SetActive(false);
             }
+            else if (Input.GetKeyDown(upgrade) && player.hasShield)
+            {
+                Shield = (Transform)Instantiate(ShieldPrefab, this.transform.position, Quaternion.identity);
+                Shield.SetParent(this.transform);
+                shieldActive = true;
+                player.hasShield = false;
+            }
+
+            if (shieldActive)
+            {
+                shieldTime -= Time.deltaTime;
+                if (shieldTime <= 0)
+                {
+                    shieldActive = false;
+                    Shield.gameObject.SetActive(false);
+                }
+            }
 
 		}
 	}
@@ -75,7 +96,10 @@ public class Movement : MonoBehaviour {
 	//Stops rotation on collision 
 	void OnCollisionEnter2D(Collision2D collision) {
 		rigidbody2D.angularVelocity = 0;
-        rigidbody2D.drag = 1;
+        if (!shieldActive)
+        {
+            rigidbody2D.drag = 1;
+        }
 	}
 	
 	void OnCollisionExit2D(Collision2D collision){

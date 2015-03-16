@@ -35,7 +35,10 @@ public class Missile : MonoBehaviour {
         if(other.transform != owner && other.transform != GameObject.Find("Lap Line").transform){
             if (other.GetComponent<Rigidbody2D>() != null)
             {
-                other.rigidbody2D.velocity = Vector2.zero;
+                if (!other.GetComponent<Movement>().shieldActive)
+                {
+                    other.rigidbody2D.velocity = Vector2.zero;
+                }
             }
             Destroy(transform.gameObject);
         }

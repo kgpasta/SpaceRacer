@@ -57,11 +57,6 @@ public class MiniGamePoints : MonoBehaviour {
 
 	void Update() {
 
-
-		if (points >= goal) {
-			MiniGameReward();		
-		}
-
 		playerPointsText.gameObject.GetComponent<Text> ().text = "Points: " + points;
 	}
 
@@ -73,26 +68,33 @@ public class MiniGamePoints : MonoBehaviour {
 	}
 
 	void upgrade (Player player, float random) {
-        if (random <= 0.33) {
+        Debug.Log(random);
+        if (random <= 0.33f && !player.hasBoost) {
             player.hasBoost = true;
         }
-        else if (random <= 0.66)
+        else if (random <= 0.66f && !player.hasMissile)
         {
             player.hasMissile = true;
         }
-        else {
+        else if(random <= 1f && !player.hasShield) {
             player.hasShield = true;
         }
 	}
 
 	public void rewardNotification (){
+        if (points >= goal)
+        {
+            MiniGameReward();
+        }
 
 		playerRewardText = (Transform)Instantiate (RewardTextPrefab);
 		playerRewardText.SetParent (GameObject.FindObjectOfType<Canvas>().transform, false);
+        string button = "E";
 
 		if (player.playerName == "Player2") {
 			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.75f, 0.3f);
 			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.75f, 0.3f);
+            button = "Shift";
 		} 
 		else {
 			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.25f, 0.3f);
@@ -100,22 +102,15 @@ public class MiniGamePoints : MonoBehaviour {
 		}
 
 		if (player.hasBoost) {
-			if (player.playerName=="Player2")
-			{	
-				playerRewardText.gameObject.GetComponent<Text> ().text = "Speed Boost Acquired! Press Shift to boost!";
-			}
-			else if (player.playerName=="Player1")
-			{
-				playerRewardText.gameObject.GetComponent<Text>().text = "Speed Boost Acquired! Press E to boost!";
-			}
+				playerRewardText.gameObject.GetComponent<Text> ().text = "Speed Boost Acquired! Press " + button + " to boost!";
 		}
 
         else if (player.hasMissile) {
-            playerRewardText.gameObject.GetComponent<Text>().text = "Missile Acquired!";
+            playerRewardText.gameObject.GetComponent<Text>().text = "Missile Acquired! Press " + button + " to Fire!";
         }
         else if (player.hasShield)
         {
-            playerRewardText.gameObject.GetComponent<Text>().text = "Shield Acquired!";
+            playerRewardText.gameObject.GetComponent<Text>().text = "Shield Acquired! Press " + button + " to Activate!";
         }
 
         else
