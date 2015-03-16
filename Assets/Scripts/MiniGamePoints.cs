@@ -20,10 +20,6 @@ public class MiniGamePoints : MonoBehaviour {
 	int minigameType;
 
 
-
-
-
-
 	void Start(){
 		player = this.transform.parent.GetComponent<MiniGameTimer> ().mainGame.GetComponent<Player>();
 		playerGoalText = (Transform) Instantiate (GoalTextPrefab);
