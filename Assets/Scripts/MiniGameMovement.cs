@@ -56,8 +56,6 @@ public class MiniGameMovement : MonoBehaviour {
 			rot = Quaternion.Euler(0,0,z);
 			transform.rotation = rot;
 
-			Vector3 velocity = new Vector3(0, Input.GetAxis(yAxisName) * maxSpeed * Time.deltaTime, 0);
-			pos += rot * velocity;
 		}
 
 		if (pos.x > width/2){

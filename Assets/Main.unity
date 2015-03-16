@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player1TextPrefab: {fileID: 22454402, guid: bd0b722b29cc34d49ad68c21adc08a2e, type: 2}
   Player2TextPrefab: {fileID: 22474376, guid: d82bf12c89b7d634cad11d18279622e0, type: 2}
-  minigamePrefab: {fileID: 170688, guid: 83f92fd9daeff452c8a360bce63363c7, type: 2}
+  minigamePrefab: {fileID: 170688, guid: 875c87c9f1c8749f4959aefe4472c029, type: 2}
   mainGame: {fileID: 0}
   player1: {fileID: 0}
   isWinner: 0
