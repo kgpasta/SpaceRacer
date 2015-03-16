@@ -10,6 +10,7 @@ public class GameEvents : MonoBehaviour {
 	Transform player1;
 	Transform player2;
 	public Transform gametext;
+    string winner;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,7 @@ public class GameEvents : MonoBehaviour {
 			player1.GetComponent<Player> ().isEnabled = false;
 			player2.GetComponent<Player> ().isEnabled = false;
 	
-			gametext.gameObject.GetComponent<Text> ().text = "Game Over!";
+			gametext.gameObject.GetComponent<Text> ().text = "Game Over!\n" + winner + " wins in " + player1.GetComponent<Player>().time + "seconds";
 		}
 	}
 
@@ -60,9 +61,13 @@ public class GameEvents : MonoBehaviour {
 	}
 
 	bool IsGameOver(){
-		if(player1.GetComponent<Player>().laps >= 3 || player2.GetComponent<Player>().laps >= 3){
+		if(player1.GetComponent<Player>().laps >= 3){
+            winner = "Player 1";
 			return true;
-		}
+		} else if(player2.GetComponent<Player>().laps >= 3){
+            winner = "Player 2";
+            return true;
+        }
 		return false;
 
 	}
