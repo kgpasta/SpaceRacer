@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
-  goal: 1
+  goal: 3
   GoalTextPrefab: {fileID: 22454402, guid: 3cb6b197e470a41d5a34b604513121df, type: 2}
   PointsTextPrefab: {fileID: 22454402, guid: 1bf540257fcb34efb90cf2dad6ecb5bd, type: 2}
   RewardTextPrefab: {fileID: 22454402, guid: 53bbaee57fddf4b03b78873a66508964, type: 2}
@@ -242,8 +242,6 @@ MonoBehaviour:
   mainGame: {fileID: 0}
   TimerTextPrefab: {fileID: 22454402, guid: db1705b89a2904ebdbcbc62cf9a133d1, type: 2}
   IntroTextPrefab: {fileID: 22496306, guid: 4e6ae7a9e0015c24a8d8c36459448591, type: 2}
-  sprite1: {fileID: 21300032, guid: bf3bdd2147b394bc2b771f2556f0b49d, type: 3}
-  sprite2: {fileID: 21300032, guid: bf3bdd2147b394bc2b771f2556f0b49d, type: 3}
 --- !u!114 &11470692
 MonoBehaviour:
   m_ObjectHideFlags: 1

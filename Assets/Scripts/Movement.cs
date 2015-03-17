@@ -78,6 +78,7 @@ public class Movement : MonoBehaviour {
             {
                 Shield = (Transform)Instantiate(ShieldPrefab, this.transform.position, Quaternion.identity);
                 Shield.SetParent(this.transform);
+				Shield.transform.localScale = new Vector3(1f,1f);
                 shieldActive = true;
                 player.hasShield = false;
                 player.ShieldIcon.SetActive(false);

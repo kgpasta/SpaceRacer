@@ -33,7 +33,7 @@ public class Missile : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D other) {
         if(other.transform != owner && other.transform != GameObject.Find("Lap Line").transform){
-            if (other.GetComponent<Rigidbody2D>() != null)
+            if (other.GetComponent<Movement>() != null)
             {
                 if (!other.GetComponent<Movement>().shieldActive)
                 {

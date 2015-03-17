@@ -170,14 +170,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 
   distanceTraveled: 0
-  lapTriggerDistance: 1
+  lapTriggerDistance: 10
   laps: 0
   acceleration: 150
   deceleration: 50
   hasBoost: 0
   speedBoost: 300
   coeffSpeedUp: 100
-  hasMissile: 0
+  hasMissile: 1
   hasShield: 0
   isEnabled: 0
   BoostIconPfab: {fileID: 192852, guid: 3c85577881da27244a0daf1baf1ed800, type: 2}
@@ -186,6 +186,7 @@ MonoBehaviour:
   BoostIcon: {fileID: 0}
   MissileIcon: {fileID: 0}
   ShieldIcon: {fileID: 0}
+  time: 0
 --- !u!114 &11461870
 MonoBehaviour:
   m_ObjectHideFlags: 1

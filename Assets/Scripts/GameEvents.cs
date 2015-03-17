@@ -6,10 +6,15 @@ public class GameEvents : MonoBehaviour {
 
 	public Transform playerPrefab;
 	public Transform GametextPrefab;
+	public Transform TimertextPrefab;
 
 	Transform player1;
 	Transform player2;
 	public Transform gametext;
+	public Transform timetext;
+
+	string timer;
+	string winner;
 
 	// Use this for initialization
 	void Start () {
@@ -22,8 +27,18 @@ public class GameEvents : MonoBehaviour {
 			player1.GetComponent<Player> ().isEnabled = false;
 			player2.GetComponent<Player> ().isEnabled = false;
 	
-			gametext.gameObject.GetComponent<Text> ().text = "Game Over!";
+			gametext.gameObject.GetComponent<Text> ().text = "Game Over!\n" + winner + " wins in " + timer + " seconds!";
+			timetext.gameObject.GetComponent<Text> ().text = "";
+
+
+
 		}
+
+		if (player1.GetComponent<Player> ().isEnabled) {
+						timer = timetext.gameObject.GetComponent<Text> ().text = player1.GetComponent<Player> ().time.ToString ();
+				}
+
+
 	}
 
 	void GameStart(){
@@ -60,7 +75,11 @@ public class GameEvents : MonoBehaviour {
 	}
 
 	bool IsGameOver(){
-		if(player1.GetComponent<Player>().laps >= 3 || player2.GetComponent<Player>().laps >= 3){
+		if(player1.GetComponent<Player>().laps >= 3){
+			winner = "Player 1";
+			return true;
+		} else if(player2.GetComponent<Player>().laps >= 3){
+			winner = "Player 2";
 			return true;
 		}
 		return false;
@@ -80,6 +99,15 @@ public class GameEvents : MonoBehaviour {
 
 		player1.GetComponent<Player> ().isEnabled = true;
 		player2.GetComponent<Player> ().isEnabled = true;
+
+		timetext = (Transform)Instantiate (TimertextPrefab);
+		timetext.SetParent(GameObject.FindObjectOfType<Canvas> ().transform, false);
+
+		timetext.gameObject.GetComponent<RectTransform> ().anchorMin = new Vector2 (0.5f, 0.2f);
+		timetext.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.5f, 0.2f);
+
+		timetext.gameObject.GetComponent<Text> ().text = timer;
+
 
 	}
 }

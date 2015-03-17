@@ -23,6 +23,7 @@ public class Player : MonoBehaviour {
     public GameObject BoostIcon;
     public GameObject MissileIcon;
     public GameObject ShieldIcon;
+	public float time = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -59,6 +60,9 @@ public class Player : MonoBehaviour {
 		distanceTraveled += Vector3.Distance(this.transform.position, previousPosition);
 		previousPosition = this.transform.position;
 		displayRewardIcon ();
+		if (isEnabled) {
+			time += Time.deltaTime;
+		}
 
 	}
 

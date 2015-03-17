@@ -19,6 +19,7 @@ public class MiniGamePoints : MonoBehaviour {
 
 	public GameObject highlight;
 	GameObject popup; 
+	int lastUpgrade = 0;
 
 	int minigameType;
 
@@ -86,14 +87,17 @@ public class MiniGamePoints : MonoBehaviour {
 	void upgrade (Player player, float random) {
         Debug.Log(random);
         if (random <= 0.33f && !player.hasBoost) {
+			lastUpgrade = 1;
             player.hasBoost = true;
         }
         else if (random <= 0.66f && !player.hasMissile)
         {
             player.hasMissile = true;
+			lastUpgrade = 2;
         }
         else if(random <= 1f && !player.hasShield) {
             player.hasShield = true;
+			lastUpgrade = 3;
         }
 	}
 
@@ -117,14 +121,14 @@ public class MiniGamePoints : MonoBehaviour {
 			playerRewardText.gameObject.GetComponent<RectTransform> ().anchorMax = new Vector2 (0.25f, 0.3f);
 		}
 
-		if (player.hasBoost) {
+		if (lastUpgrade == 1) {
 				playerRewardText.gameObject.GetComponent<Text> ().text = "Speed Boost Acquired! Hold " + button + " to boost!";
 		}
 
-        else if (player.hasMissile) {
+        else if (lastUpgrade == 2) {
             playerRewardText.gameObject.GetComponent<Text>().text = "Missile Acquired! Press " + button + " to Fire!";
         }
-        else if (player.hasShield)
+        else if (lastUpgrade == 3)
         {
             playerRewardText.gameObject.GetComponent<Text>().text = "Shield Acquired! Press " + button + " to Activate!";
         }
